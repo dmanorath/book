@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">WebSiteName</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="#">Page 1</a></li>
+      <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <form id="signupForm" method="POST">
+    <div class="container">
+        <label><b>First Name</b></label>
+      <input type="text" placeholder="Enter Email" name="firstName" required>
+
+      <label><b>Last Name</b></label>
+      <input type="text" placeholder="Enter Password" name="lastName" required>
+
+      <label><b>Choose College</b></label>
+      <input type="text" placeholder="Enter Email" name="collegeID" required>
+
+      <label><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
+
+      <label><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <label><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+      <input type="checkbox" checked="checked"> Remember me
+      <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+
+      <div class="clearfix">
+        <button type="button"  class="cancelbtn">Cancel</button>
+        <button type="submit" class="signupbtn">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+//   $('button.signupbtn').click(function(e){
+//     e.preventDefault();
+//     var $form = $( this ),
+//     term = $form.val();
+//     $.post('http://127.0.0.1:5000/api/usersignup', term);
+// });
+  $('button.signupbtn').click(function(e){
+    e.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: 'http://127.0.0.1:5000/api/usersignup',
+      jsonp: 'callback',
+      dataType: 'jsonp',
+      data: $('#signupForm').serialize(),
+      success: function(data){
+        alert(data);
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
