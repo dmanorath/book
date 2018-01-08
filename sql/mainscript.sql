@@ -50,6 +50,6 @@ select * from Listing;
 UPDATE Listing SET BookTitle = 'New Book Title' WHERE LID = 1
 
 INSERT INTO Users (FirstName, LastName, Email, PassWord, CollegeID)
-VALUES ('Ram', 'Bastola', 'rambastola@yahoo.com', 'slkdj', 1);
+VALUES ('Jack', 'Basdasda', 'sd@yassshoo.com', 'slkdj', 1);
 */
 SELECT * FROM Listing WHERE CollegeID = 1
